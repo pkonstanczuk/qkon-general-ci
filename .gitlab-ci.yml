@@ -1,0 +1,15 @@
+variables:
+  DOCKER_AUTH_CONFIG: $DOCKER_AUTH_CONFIG
+
+stages:
+  - build
+
+build-ci-image:
+  image: docker:20.10.16
+  services:
+    - docker:20.10.16-dind
+  stage: build
+  script:
+    - ./build.sh --publish
+  rules:
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
