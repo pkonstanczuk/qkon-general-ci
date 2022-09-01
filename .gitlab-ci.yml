@@ -1,5 +1,5 @@
 variables:
-  DOCKER_AUTH_CONFIG: $DOCKER_AUTH_CONFIG
+  DOCKERHUB_PASS: $DOCKERHUB_PASS
 
 stages:
   - build
