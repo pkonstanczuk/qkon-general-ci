@@ -11,5 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: cd ./java11-docker
-      - run: ./build.sh --publish
+      - uses: docker/login-action@v1
+        with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+      - run: cd ./java11-docker && ./build.sh --publish
